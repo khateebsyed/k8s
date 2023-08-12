@@ -17,5 +17,5 @@ spec:
         version: v1
     spec:
       containers:
-        - image: khateebsyed/deployment-image:blue
+        - image: khateebsyed/bg-deployment:blue
           name: container-blue
