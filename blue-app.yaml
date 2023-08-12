@@ -17,5 +17,5 @@ spec:
         version: v1
     spec:
       containers:
-        - image: gcr.io/google-samples/hello-app:1.0
+        - image: khateebsyed/deployment-image:blue
           name: container-blue
