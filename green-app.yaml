@@ -17,5 +17,5 @@ spec:
         version: v1
     spec:
       containers:
-        - image: khateebsyed/deployment-image:green
+        - image: khateebsyed/bg-deployment:green
           name: container-green
