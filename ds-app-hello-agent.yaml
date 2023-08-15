@@ -12,7 +12,7 @@ spec:
         tier: hello-agent
     spec:
       nodeSelector:
-        app=hello
+        app: hello
       containers:
         - name: container1
           image: gcr.io/google-samples/hello-app:1.0
