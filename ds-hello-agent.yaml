@@ -3,7 +3,6 @@ kind: DaemonSet
 metadata:
   name: ds-hello-agent
 spec:
-  replicas: 3
   selector:
     matchLabels:
       tier: hello-agent
