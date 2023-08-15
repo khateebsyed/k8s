@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web-application
+  name: webapp-deploy
   labels:
     app: web
 spec:
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - image: nginx
-        name: web-application-container
+        name: container-1
         resources:
           limits:
             cpu: "100m"
