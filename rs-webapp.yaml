@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: rs-webapp
+  labels:
+    tier: webapp
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      tier: webapp
+  template:
+    metadata:
+      labels:
+        tier: webapp
+    spec:
+      containers:
+      - name: container-1
+        image: nginx:1.19
