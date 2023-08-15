@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: ds-app-hello-agent
+spec:
+  selector:
+    matchLabels:
+      tier: hello-agent
+  template:
+    metadata:
+      labels:
+        tier: hello-agent
+    spec:
+      nodeSelector:
+        app=hello
+      containers:
+        - name: container1
+          image: gcr.io/google-samples/hello-app:1.0
