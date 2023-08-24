@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webapp-tls-deploy
+  name: webapp-ingress-tls-deploy
 spec:
   replicas: 1
   selector:
