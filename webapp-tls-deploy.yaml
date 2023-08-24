@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-tls-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp-tls
+  template:
+    metadata:
+      labels:
+        app: webapp-tls
+    spec:
+      containers:
+      - name: webapp-container
+        image: katacoda/docker-http-server:latest
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-tls-svc
+  labels:
+    app: webapp-tls
+spec:
+  ports:
+  - port: 80
+  selector:
+    app: webapp-tls
