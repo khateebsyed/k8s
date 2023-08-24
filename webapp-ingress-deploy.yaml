@@ -13,7 +13,7 @@ spec:
         app: webapp1
     spec:
       containers:
-      - name: webapp1
+      - name: webapp1-container
         image: katacoda/docker-http-server:latest
         ports:
         - containerPort: 80
@@ -45,7 +45,7 @@ spec:
         app: webapp2
     spec:
       containers:
-      - name: webapp2
+      - name: webapp2-container
         image: katacoda/docker-http-server:latest
         ports:
         - containerPort: 80
@@ -77,7 +77,7 @@ spec:
         app: webapp3
     spec:
       containers:
-      - name: webapp3
+      - name: webapp3-container
         image: katacoda/docker-http-server:latest
         ports:
         - containerPort: 80
