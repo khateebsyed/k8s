@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: important-app-pod
+spec:
+  containers:
+  - name: container-1
+    image: nginx
+  nodeName: worker-2
