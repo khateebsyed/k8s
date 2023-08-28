@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: emptydir-deploy
+  labels:
+    app: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - image: busybox
+        name: container-1
+        imagePullPolicy: IfNotPresent
+        command: [ "/bin/sh", "-c", "while true; do date; sleep 20; done > /opt/time/time-check.log" ]
+        volumeMounts:
+        - name: test-volume
+          mountPath: "/opt/time"
+      volumes:
+      - name: test-volume
+        emptyDir: {}
