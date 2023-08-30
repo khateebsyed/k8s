@@ -14,7 +14,7 @@ spec:
       labels:
         app: client-nfs-provisioner
     spec:
-      serviceAccountName: sa-nfs-dynamic-provisioner 
+      serviceAccountName: nfs-client-provisioner 
       containers:
         - name: client-nfs
           image: quay.io/external_storage/nfs-client-provisioner:latest
