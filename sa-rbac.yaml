@@ -1,12 +1,12 @@
 kind: ServiceAccount
 apiVersion: v1
 metadata:
-  name: nfs-pod-provisioner-sa
+  name: sa-nfs-dynamic-provisioner
 ---
 kind: ClusterRole # Role of kubernetes
 apiVersion: rbac.authorization.k8s.io/v1 # auth API
 metadata:
-  name: nfs-provisioner-clusterRole
+  name: clusterrole-nfs-dynamic-provisioner
 rules:
   - apiGroups: [""] # rules on persistentvolumes
     resources: ["persistentvolumes"]
@@ -24,20 +24,20 @@ rules:
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: nfs-provisioner-rolebinding
+  name: clusterrolebinding-nfs-dynamic-provisioner
 subjects:
   - kind: ServiceAccount
-    name: nfs-pod-provisioner-sa # defined on top of file
+    name: sa-nfs-dynamic-provisioner 
     namespace: default
-roleRef: # binding cluster role to service account
+roleRef: 
   kind: ClusterRole
-  name: nfs-provisioner-clusterRole # name defined in clusterRole
+  name: clusterrole-nfs-dynamic-provisioner 
   apiGroup: rbac.authorization.k8s.io
 ---
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: nfs-pod-provisioner-otherRoles
+  name: role-nfs-dynamic-provisioner
 rules:
   - apiGroups: [""]
     resources: ["endpoints"]
@@ -46,13 +46,12 @@ rules:
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: nfs-pod-provisioner-otherRoles
+  name: rolebinding-nfs-dynamic-provisioner
 subjects:
   - kind: ServiceAccount
-    name: nfs-pod-provisioner-sa # same as top of the file
-    # replace with namespace where provisioner is deployed
+    name: sa-nfs-dynamic-provisioner 
     namespace: default
 roleRef:
   kind: Role
-  name: nfs-pod-provisioner-otherRoles
+  name: role-nfs-dynamic-provisioner
   apiGroup: rbac.authorization.k8s.io
