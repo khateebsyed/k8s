@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-nfs-dynamic
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-dynamic
+  template:
+    metadata:
+      labels:
+        app: nginx-dynamic
+    spec:
+      volumes:
+      - name: volume-dynamic
+        persistentVolumeClaim:
+          claimName: pvc-nfs-dynamic
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: volume-dynamic
+          mountPath: "/usr/share/nginx/html"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-nfs-dynamic
+spec:
+  selector:
+    app: nginx-dynamic
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
