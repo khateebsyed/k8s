@@ -5,7 +5,7 @@ metadata:
 spec:
   storageClassName: sc-provisioner
   accessModes:
-    - ReadWriteMany 
+    - ReadWriteMany
   resources:
     requests:
-      storage: 50Mi
+      storage: 2Gi
