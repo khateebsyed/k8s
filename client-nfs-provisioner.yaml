@@ -4,6 +4,9 @@ metadata:
   name: client-nfs-provisioner
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: client-nfs-provisioner
   strategy:
     type: Recreate
   template:
@@ -13,7 +16,7 @@ spec:
     spec:
       serviceAccountName: sa-nfs-dynamic-provisioner 
       containers:
-        - name: client-nfs-provisioner
+        - name: client-nfs
           image: quay.io/external_storage/nfs-client-provisioner:latest
           volumeMounts:
             - name: volume-nfs-provisioner
