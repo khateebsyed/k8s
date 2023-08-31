@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: filter-pod-1
+  labels:
+    company: software
+    priority: high
+    region: asia
+spec:
+  containers:
+  - name: container-1
+    image: nginx
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: filter-pod-2
+  labels:
+    company: telecom
+    priority: medium
+    region: europe
+spec:
+  containers:
+  - name: container-2
+    image: nginx
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: filter-pod-3
+  labels:
+    company: energy
+    priority: low
+    region: africa
+spec:
+  containers:
+  - name: container-3
+    image: nginx
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: filter-pod-4
+  labels:
+    company: telecom
+    priority: low
+    region: asia
+spec:
+  containers:
+  - name: container-4
+    image: nginx
